@@ -1,8 +1,11 @@
 package com.hendisantika.service;
 
+import com.hendisantika.domain.Tag;
 import com.hendisantika.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,5 +28,9 @@ public class TagService {
 
     public boolean isTagInDatabase(String tagName) {
         return !tagRepository.findByNameIgnoreCase(tagName).isEmpty();
+    }
+
+    public List<Tag> findAll() {
+        return tagRepository.findAll();
     }
 }
