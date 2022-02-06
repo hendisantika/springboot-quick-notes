@@ -1,6 +1,7 @@
 package com.hendisantika.controller;
 
 import com.hendisantika.domain.Note;
+import com.hendisantika.domain.Tag;
 import com.hendisantika.dto.FindNoteDTO;
 import com.hendisantika.dto.NoteDTO;
 import com.hendisantika.service.NoteService;
@@ -86,5 +87,19 @@ public class NotesController {
         redirectAttributes.addFlashAttribute("notesFind", Boolean.TRUE);
         redirectAttributes.addFlashAttribute("notes", noteService.findNotesForGivenCriteria(findNoteDTO));
         return "redirect:/note/find";
+    }
+
+    @GetMapping("{id}/delete")
+    public String deleteNote(@PathVariable String id, RedirectAttributes redirectAttributes) {
+
+        noteService.deleteNoteWithId(id);
+        redirectAttributes.addFlashAttribute("noteDeleted", Boolean.TRUE);
+
+        return "redirect:/note/find";
+    }
+
+    @ModelAttribute("tags")
+    public List<Tag> tags() {
+        return tagService.findAll();
     }
 }
