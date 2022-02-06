@@ -1,9 +1,12 @@
 package com.hendisantika.controller;
 
+import com.hendisantika.dto.NoteDTO;
 import com.hendisantika.service.NoteService;
 import com.hendisantika.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -32,4 +35,9 @@ public class NotesController {
         this.tagService = tagService;
     }
 
+    @GetMapping("/add")
+    public String prepareAddNoteForm(Model model) {
+        model.addAttribute("note", new NoteDTO());
+        return ADD_NOTE_PAGE_NAME;
+    }
 }
