@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorator="layout/template"
+      xmlns:layout="http://www.ultraq.net.nz/thymelaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Notes</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="message-div" th:if="${tagCreated}">
+        <div class="alert alert-success">
+            Tag has been successfully created
+        </div>
+    </div>
+    <div class="message-div" th:if="${noteCreated}">
+        <div class="alert alert-success">
+            Note has been successfully created
+        </div>
+    </div>
+</div>
+</body>
+</html>
