@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorator="layout/template"
+      xmlns:layout="http://www.ultraq.net.nz/thymelaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add note</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <br/>
+    <br/>
+    <form th:action="@{/note/find}" th:method="POST" th:object="${note}">
+        <div class="form-group row">
+            <label class="col-sm-12 col-form-label" for="title">Title :</label>
+            <div class="col-sm-12">
+                <input class="form-control" id="title" placeholder="Title" th:field="${note.title}" type="text"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-12 col-form-label" for="description">Description :</label>
+            <div class="col-sm-12">
+                <textarea class="form-control" id="description"
+                          placeholder="Type in some part of description to be searched" th:field="${note.description}"
+                          type="text"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-12 col-form-label" for="tag">Tag :</label>
+            <div class="col-sm-12">
+                <select class="form-control" th:field="${note.tag}">
+                    <option th:text="|Find All Tags|" th:value="TAGS_ALL"/>
+                    <option th:each="tag : ${tags}"
+                            th:text="${tag.name}"
+                            th:value="${tag.name}"/>
+                </select>
+            </div>
+        </div>
+        <div class="form-group-row">
+            <div class="offset-sm-4 col-sm-4 text-center">
+                <button class="btn btn-primary" type="submit">Search !</button>
+            </div>
+        </div>
+    </form>
+    <br/>
+    <br/>
+    <div class="message-div" th:if="${noteDeleted}">
+        <div class="alert alert-success">
+            Note has been successfully deleted
+        </div>
+    </div>
+    <div th:if="${notesFind}">
+        <div th:each="noteFound : ${notes}">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <span th:text="${noteFound.title}"></span>
+                            </h5>
+                        </div>
+                        <div class="card-block" style="display: none">
+                            <p th:text="${noteFound.description}"/>
+                            <br/>
+                            <div class="text-center">
+                                <a class="btn btn-primary" th:href="@{/note/{id}/delete(id=${noteFound.id})}">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
