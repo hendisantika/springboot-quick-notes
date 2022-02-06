@@ -1,5 +1,6 @@
 package com.hendisantika.service;
 
+import com.hendisantika.domain.Note;
 import com.hendisantika.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,9 @@ public class NoteService {
     @Autowired
     public NoteService(NoteRepository noteRepository) {
         this.noteRepository = noteRepository;
+    }
+
+    public Note insert(Note note) {
+        return noteRepository.insert(note);
     }
 }
