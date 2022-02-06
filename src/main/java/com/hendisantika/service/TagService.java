@@ -22,4 +22,8 @@ public class TagService {
     public TagService(TagRepository tagRepository) {
         this.tagRepository = tagRepository;
     }
+
+    public boolean isTagInDatabase(String tagName) {
+        return !tagRepository.findByNameIgnoreCase(tagName).isEmpty();
+    }
 }
