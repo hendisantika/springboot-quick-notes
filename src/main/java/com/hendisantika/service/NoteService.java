@@ -55,4 +55,20 @@ public class NoteService {
         noteRepository.deleteById(id);
     }
 
+    private List<Note> findNotesByTitleOrDescriptionWithoutTagCheck(FindNoteDTO findNoteCriteria) {
+        List<Note> foundNotes;
+        if (findNoteCriteria.searchByDescriptionOnly()) {
+            foundNotes = noteRepository.findAllByDescriptionContainingIgnoreCase(findNoteCriteria.getDescription());
+        } else if (findNoteCriteria.searchByTitleOnly()) {
+            foundNotes = noteRepository.findAllByTitleContainingIgnoreCase(findNoteCriteria.getTitle());
+        } else if (findNoteCriteria.searchByTagOnly()) {
+            foundNotes = noteRepository.findAll();
+        } else {
+            foundNotes = noteRepository
+                    .findAllByDescriptionContainingIgnoreCaseOrTitleContainingIgnoreCase(
+                            findNoteCriteria.getDescription(), findNoteCriteria.getTitle());
+        }
+
+        return foundNotes;
+    }
 }
