@@ -1,9 +1,13 @@
 package com.hendisantika.service;
 
 import com.hendisantika.domain.Note;
+import com.hendisantika.dto.FindNoteDTO;
 import com.hendisantika.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,5 +30,24 @@ public class NoteService {
 
     public Note insert(Note note) {
         return noteRepository.insert(note);
+    }
+
+    public List<Note> findNotesForGivenCriteria(FindNoteDTO findNoteCriteria) {
+        if (findNoteCriteria.noCriteria()) {
+            return noteRepository.findAll();
+        } else {
+
+            List<Note> foundNotes = findNotesByTitleOrDescriptionWithoutTagCheck(findNoteCriteria);
+
+            if (findNoteCriteria.findAllTags()) {
+                return foundNotes;
+            } else {
+                return foundNotes
+                        .stream()
+                        .filter((note) -> note.getTags().contains(findNoteCriteria.getTag()))
+                        .collect(Collectors.toList());
+            }
+        }
+
     }
 }
