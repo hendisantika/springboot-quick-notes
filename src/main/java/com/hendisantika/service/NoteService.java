@@ -50,4 +50,9 @@ public class NoteService {
         }
 
     }
+
+    public void deleteNoteWithId(String id) {
+        noteRepository.deleteById(id);
+    }
+
 }
