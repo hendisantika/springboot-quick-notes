@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymelaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+    <title>Template</title>
+
+    <link crossorigin="anonymous"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" rel="stylesheet"/>
+    <link href="../../static/styles/style.css" rel="stylesheet" th:href="@{/styles/style.css}" type="text/css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header">
+                <h1 class="text-center">
+                    Notes
+                    <br/>
+                    <small>Simply write it down before You forget</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-sm-12 col-md-4">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="text-center">Add tag</h4>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-primary text-center" th:href="@{/tag/add}">ADD</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="text-center">Add a new note</h4>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-primary text-center" th:href="@{/note/add}">ADD</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="text-center">Browse notes</h4>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-primary text-center" th:href="@{/note/find}">BROWSE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section layout:fragment="content">
+        <p>In layout content</p>
+    </section>
+</div>
+
+
+<script crossorigin="anonymous"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script th:src="@{/scripts/custom.js}"
+        type="text/javascript"></script>
+</body>
+</html>
