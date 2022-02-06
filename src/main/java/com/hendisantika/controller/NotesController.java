@@ -78,4 +78,13 @@ public class NotesController {
 
         return FIND_NOTE_PAGE_NAME;
     }
+
+    @PostMapping("/find")
+    public String processFindNoteForm(@ModelAttribute(name = "note") FindNoteDTO findNoteDTO,
+                                      RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addFlashAttribute("notesFind", Boolean.TRUE);
+        redirectAttributes.addFlashAttribute("notes", noteService.findNotesForGivenCriteria(findNoteDTO));
+        return "redirect:/note/find";
+    }
 }
