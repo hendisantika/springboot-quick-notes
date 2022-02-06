@@ -1,6 +1,7 @@
 package com.hendisantika.controller;
 
 import com.hendisantika.domain.Note;
+import com.hendisantika.dto.FindNoteDTO;
 import com.hendisantika.dto.NoteDTO;
 import com.hendisantika.service.NoteService;
 import com.hendisantika.service.TagService;
@@ -69,5 +70,12 @@ public class NotesController {
 
         redirectAttributes.addFlashAttribute("noteCreated", Boolean.TRUE);
         return "redirect:/home";
+    }
+
+    @GetMapping("/find")
+    public String prepareFindNoteForm(Model model) {
+        model.addAttribute("note", new FindNoteDTO());
+
+        return FIND_NOTE_PAGE_NAME;
     }
 }
