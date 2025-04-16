@@ -1,8 +1,7 @@
 package com.hendisantika.dto;
 
+import jakarta.validation.constraints.Size;
 import lombok.Data;
-
-import javax.validation.constraints.Size;
 
 /**
  * Created by IntelliJ IDEA.
