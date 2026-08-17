@@ -19,11 +19,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FindNoteDTO {
-    private String title;
+    private String title = "";
 
-    private String description;
+    private String description = "";
 
-    private String tag;
+    private String tag = Tag.FIND_ALL_TAGS;
 
     public boolean findAllTags() {
         return tag.equals(Tag.FIND_ALL_TAGS);
