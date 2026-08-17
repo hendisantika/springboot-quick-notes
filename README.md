@@ -13,15 +13,15 @@ A small Spring Boot + Thymeleaf web app for jotting down quick notes and organiz
 
 ## Tech stack
 
-- Java 21
-- Spring Boot 3.4.x (Web, Validation, Thymeleaf, Data MongoDB)
+- Java 25
+- Spring Boot 4.1.x (Web, Validation, Thymeleaf, Data MongoDB)
 - MongoDB
 - Lombok
 - Maven
 
 ## Prerequisites
 
-- JDK 21+
+- JDK 25+
 - MongoDB running locally on `localhost:27017` (or update `src/main/resources/application.properties`)
 
 The quickest way to get MongoDB running locally is with Docker:
