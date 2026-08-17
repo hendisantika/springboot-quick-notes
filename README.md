@@ -4,6 +4,16 @@
 
 A small Spring Boot + Thymeleaf web app for jotting down quick notes and organizing them with tags, backed by MongoDB.
 
+## Screenshots
+
+| Home | Add note |
+| --- | --- |
+| ![Home page](docs/screenshots/home.jpg) | ![Add note form](docs/screenshots/add-note.jpg) |
+
+| Add tag | Find notes |
+| --- | --- |
+| ![Add tag form](docs/screenshots/add-tag.jpg) | ![Find notes results](docs/screenshots/find-notes.jpg) |
+
 ## Features
 
 - Create tags
